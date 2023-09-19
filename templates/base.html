@@ -22,9 +22,7 @@
     <!-- Responsive CSS -->
     <link href="{% static 'css/responsive/responsive.css' %}" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-                 rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" >
 </head>
 
 <body>
@@ -33,7 +31,7 @@
         <div class="yummy-load"></div>
     </div>
 
-
+    <!-- Background Pattern Swither -->
 
     <!-- ****** Top Header Area Start ****** -->
     <div class="top_header_area">
@@ -42,19 +40,25 @@
                 <div class="col-5 col-sm-6">
                     <!--  Top Social bar start -->
 
-
                 </div>
                 <!--  Login Register Area -->
                 <div class="col-7 col-sm-6">
                     <div class="signup-search-area d-flex align-items-center justify-content-end">
-                        <div class="login_register_area d-flex">
+
+                                {% if not request.user.is_authenticated %}
                             <div class="login" style="z-index:5;">
-                            <a href="{% url 'sign_in' %}">Войти</a>
+                                <a href="{% url 'sign_in' %}">Войти</a>
                             </div>
                             <div class="register" style="z-index:5;">
                                 <a href="{% url 'register' %}">Регистрация</a>
                             </div>
-                        </div>
+                            {% else %}
+                            <div class="register" style="z-index:5;">
+                                <a href="{% url 'logout' %}">Выйти</a>
+                            </div>
+                                {% endif %}
+
+
                         <!-- Search Button Area -->
                         <div class="search_button">
                             <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
@@ -75,14 +79,6 @@
     <!-- ****** Top Header Area End ****** -->
 
     <!-- ****** Header Area Start ****** -->
-
-
-    {% block content %}
-
-    {% endblock %}
-
-
-
     <header class="header_area">
         <div class="container">
             <div class="row">
@@ -138,10 +134,10 @@
     </header>
     <!-- ****** Header Area End ****** -->
 
+    {% block content %}
 
 
-
-
+    {% endblock %}
 
     <!-- ****** Footer Social Icon Area Start ****** -->
     <div class="social_icon_area clearfix">
@@ -149,26 +145,6 @@
             <div class="row">
                 <div class="col-12">
                     <div class="footer-social-area d-flex">
-                        <div class="single-icon">
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>facebook</span></a>
-                        </div>
-                        <div class="single-icon">
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
-                        </div>
-                        <div class="single-icon">
-                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span>GOOGLE+</span></a>
-                        </div>
-                        <div class="single-icon">
-                            <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i><span>linkedin</span></a>
-                        </div>
-                        <div class="single-icon">
-                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-                        </div>
-                        <div class="single-icon">
-                            <a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i><span>VIMEO</span></a>
-                        </div>
-                        <div class="single-icon">
-                            <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i><span>YOUTUBE</span></a>
                         </div>
                     </div>
                 </div>
@@ -233,7 +209,7 @@
 
     <!-- ****** Footer Menu Area End ****** -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" ></script>
     <!-- Jquery-2.2.4 js -->
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <!-- Popper js -->
@@ -244,5 +220,4 @@
     <script src="{% static 'js/others/plugins.js' %}"></script>
     <!-- Active JS -->
     <script src="{% static 'js/active.js' %}"></script>
-
 </body>

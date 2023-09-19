@@ -1,6 +1,4 @@
-{% extends "base.html" %}
 
-{% block content %}
 <form class="card card-md"  method="post">
           {% csrf_token %}
           <div class="card-body">
@@ -55,6 +53,5 @@
           </div>
         </form>
         <div class="text-center text-muted mt-3">
-          Уже есть аккаунт? <a href="{url 'sign-in'}" tabindex="-1">Войти</a>
+          Уже есть аккаунт? <a href="{% url 'sign-in' %}" tabindex="-1">Войти</a>
         </div>
-{% endblock %}

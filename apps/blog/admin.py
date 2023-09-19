@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Food, Comment
+from .models import Food, Comment, Category, Post
 # Register your models here.
 
 @admin.register(Food)
@@ -22,3 +22,25 @@ class UserAdmin(admin.ModelAdmin):
             'created',
             'updated'
     ]
+
+@admin.register(Category)
+class UserAdmin(admin.ModelAdmin):
+    list_display = [
+            'id',
+            'name',
+            'slug',
+            'icon']
+
+
+@admin.register(Post)
+class UserAdmin(admin.ModelAdmin):
+    list_display = [
+            'id',
+            'author',
+            'title',
+            'text',
+            'created',
+            'updated',
+            'photo',
+            'is_draft']
+
